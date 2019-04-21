@@ -15,6 +15,7 @@ class UserTokenResourceTestCase(unittest.TestCase):
 
     def tearDown(self):
         db.session.query(User).filter(User.user_name == 'test-login-success').delete()
+        db.session.commit()
         db.session.remove()
         self.app_context.pop()
 

@@ -19,11 +19,14 @@ def create_app(config_name):
 
     from cyclrr.resources.user import UserResource, UserListResource
     from cyclrr.resources.user_token import UserTokenResource
+    from cyclrr.resources.content import ContentResource, ContentListResource
     
     api = Api(app)
     api.add_resource(UserResource, '/users/<int:user_id>')
     api.add_resource(UserListResource, '/users')
     api.add_resource(UserTokenResource, '/user/token')
+    api.add_resource(ContentResource, '/content/<int:content_id>')
+    api.add_resource(ContentListResource, '/contents', '/contents/<int:user_id>')
 
     login_manager = LoginManager()
     login_manager.init_app(app)
