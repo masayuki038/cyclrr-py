@@ -1,4 +1,4 @@
-from flask_restful import Resource, reqparse
+from flask_restful import Resource
 from flask import jsonify
 from flask import request
 from marshmallow import ValidationError
@@ -17,8 +17,6 @@ class UserResource(Resource):
 class UserListResource(Resource):
 
     def post(self):
-        #args = self.reqparser.parse_args()
-        #user = User(user_name = args.user_name, password = args.password, first_name = args.first_name, last_name = args.last_name, mail = args.mail)
         try:
             js = request.get_json()
             unmarshalled = UserSchema().load(js)
