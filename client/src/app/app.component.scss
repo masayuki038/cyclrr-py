@@ -1,0 +1,22 @@
+.toolbar {
+  margin-bottom: 10px;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.nav-item {
+  margin-right: 10px;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+a.nav-link {
+  text-decoration: none;
+}
+
+a:hover.nav-link {
+  text-decoration: underline;
+}

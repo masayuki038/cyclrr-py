@@ -1,0 +1,11 @@
+<div class="content" *ngIf="content">
+  <mat-form-field>
+    <input matInput [(ngModel)]="content.title" placeholder="Title"/>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="content.content" cols="100" rows="20" placeholder="Content"></textarea>
+  </mat-form-field>
+</div>
+
+<button mat-flat-button (click)="goBack()">go back</button>
+<button mat-flat-button (click)="save()" color="primary">save</button>
