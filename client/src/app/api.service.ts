@@ -18,8 +18,8 @@ export class ApiService {
     private http: HttpClient, 
     private messageService: MessageService) { }
 
-  public getContents(): Observable<Content[]> {
-    var endpoint = this.API_URL + "contents";
+  public getContents(uid: number): Observable<Content[]> {
+    var endpoint = this.API_URL + "contents/" + uid;
     return this.http.get<Content[]>(endpoint)
       .pipe(
         tap(_ => this.log('fetched contents')),

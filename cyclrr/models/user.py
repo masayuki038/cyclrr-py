@@ -2,7 +2,7 @@ from datetime import datetime
 from flask_marshmallow.fields import fields
 from flask_login import UserMixin
 
-from cyclrr import db, ma
+from cyclrr import db, ma, login_manager
 
 class User(db.Model, UserMixin): 
     __tablename__ = 'users'
@@ -24,6 +24,11 @@ class User(db.Model, UserMixin):
         now = datetime.now()
         self.created_at = now
         self.modified_at = now
+
+@login_manager.user_loader
+def load_user(id):
+    print("id: " + id)
+    return db.session.query(User).filter_by(id=id).first()
 
 class UserSchema(ma.ModelSchema):
     class Meta:

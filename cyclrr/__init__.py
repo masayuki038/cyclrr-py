@@ -7,6 +7,7 @@ import os
 
 db = SQLAlchemy()
 ma = Marshmallow()
+login_manager = LoginManager()
 
 def create_app(app):
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
@@ -25,7 +26,6 @@ def create_app(app):
     api.add_resource(ContentResource, '/content/<int:content_id>')
     api.add_resource(ContentListResource, '/contents', '/contents/<int:user_id>')
 
-    login_manager = LoginManager()
     login_manager.init_app(app)
     app.secret_key = 'DWcrTq&r!dNr+vdHy~sTA($_~n|aYSCMr/ndKFdW'
     

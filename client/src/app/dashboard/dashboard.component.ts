@@ -16,8 +16,5 @@ export class DashboardComponent implements OnInit {
     this.getContents();
   }
 
-  getContents(): void {
-    this.apiService.getContents()
-      .subscribe(contents => this.contents = contents.slice(1, 5));
-  }
+  getContents(): void {}
 }

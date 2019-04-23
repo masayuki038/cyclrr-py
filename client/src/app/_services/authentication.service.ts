@@ -19,10 +19,10 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(username: string, password: string) {
-    return this.http.post<any>(`/users/authenticate`, { username, password })
+  login(user_name: string, password: string) {
+    return this.http.post<any>(`/user/token`, { user_name, password })
       .pipe(map(user => {
-        if (user && user.token) {
+        if (user) {
 	        localStorage.setItem('currentUser', JSON.stringify(user));
 	          this.currentUserSubject.next(user);
 	      }

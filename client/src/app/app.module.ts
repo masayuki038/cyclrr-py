@@ -19,7 +19,6 @@ import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
-import { fakeBackendProvider } from './_helpers/fake-backend';
 import { MatButtonModule,
 				 MatCheckboxModule,
 				 MatToolbarModule,
@@ -64,8 +63,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   providers: [
     ApiService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    fakeBackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
