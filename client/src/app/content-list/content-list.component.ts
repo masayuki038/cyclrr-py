@@ -14,20 +14,19 @@ export class ContentListComponent implements OnInit {
 
   public columns = ['id', 'name'];
   public rows: Content[];
-  currentUser: User;
+  currentUser: any;
   currentUserSubscription: Subscription;
 
   constructor(public apiService: ApiService,
-    public authenticationService: AuthenticationService) {
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-      this.currentUser = user;
+    public authenticationService: AuthenticationService) { }
+
+  ngOnInit() {
+    const userJson = localStorage.getItem('currentUser');
+    if (userJson) {
+      this.currentUser = JSON.parse(userJson);
       this.apiService.getContents(this.currentUser.id).subscribe((contents) => {
         this.rows = contents;
       });
-    }); 
-  }
-
-  ngOnInit() {
-
+    }
   }
 }

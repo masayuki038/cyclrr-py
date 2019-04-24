@@ -1380,18 +1380,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var ContentListComponent = /** @class */ (function () {
     function ContentListComponent(apiService, authenticationService) {
-        var _this = this;
         this.apiService = apiService;
         this.authenticationService = authenticationService;
         this.columns = ['id', 'name'];
-        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(function (user) {
-            _this.currentUser = user;
-            _this.apiService.getContents(_this.currentUser.id).subscribe(function (contents) {
-                _this.rows = contents;
-            });
-        });
     }
     ContentListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var userJson = localStorage.getItem('currentUser');
+        if (userJson) {
+            this.currentUser = JSON.parse(userJson);
+            this.apiService.getContents(this.currentUser.id).subscribe(function (contents) {
+                _this.rows = contents;
+            });
+        }
     };
     return ContentListComponent;
 }());
@@ -1554,19 +1555,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(authenticationService, userService) {
-        var _this = this;
         this.authenticationService = authenticationService;
         this.userService = userService;
         this.users = [];
-        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(function (user) {
-            _this.currentUser = user;
-        });
     }
     HomeComponent.prototype.ngOnInit = function () {
+        var userJson = localStorage.getItem('currentUser');
+        if (userJson) {
+            this.currentUser = JSON.parse(userJson);
+        }
     };
-    HomeComponent.prototype.ngOnDestroy = function () {
-        this.currentUserSubscription.unsubscribe();
-    };
+    HomeComponent.prototype.ngOnDestroy = function () { };
     return HomeComponent;
 }());
 

@@ -5,7 +5,7 @@ from marshmallow import Schema, ValidationError, fields, pprint
 from sqlalchemy import and_
 
 from cyclrr import db, ma
-from cyclrr.models.user import User
+from cyclrr.models.user import User, UserSchema
 
 class UserTokenResource(Resource):
 
@@ -21,10 +21,11 @@ class UserTokenResource(Resource):
         
         login_name = unmarshalled.data['user_name']
         login_password = unmarshalled.data['password']
-        u = db.session.query(User).filter(User.user_name == login_name, User.password == login_password).first()
+        u = db.session.query(User).filter(
+            User.user_name == login_name, User.password == login_password).first()
         if u is not None:
             login_user(u)
-            return "Logined", 200
+            return jsonify(UserSchema().dump(u).data)
         else:
             return "Failed to login", 401
 

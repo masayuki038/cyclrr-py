@@ -8,23 +8,21 @@ import { UserService } from '../_services/user.service';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit, OnDestroy {
-  currentUser: User;
+  currentUser: any;
   currentUserSubscription: Subscription;
   users: User[] = [];
 
   constructor(
     private authenticationService: AuthenticationService,
     private userService: UserService
-  ) {
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-      this.currentUser = user;
-    }); 
-  }
+  ) { }
   
   ngOnInit() {
+    const userJson = localStorage.getItem('currentUser');
+    if (userJson) {
+      this.currentUser = JSON.parse(userJson);
+    }
   }
 
-  ngOnDestroy() {
-    this.currentUserSubscription.unsubscribe();
-  }
+  ngOnDestroy() { }
 }
