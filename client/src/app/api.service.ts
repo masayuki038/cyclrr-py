@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
-  API_URL: string = "";
+  API_URL: string = "/";
   constructor(
     private http: HttpClient, 
     private messageService: MessageService) { }
@@ -23,21 +23,20 @@ export class ApiService {
     return this.http.get<Content[]>(endpoint)
       .pipe(
         tap(_ => this.log('fetched contents')),
-	catchError(this.handleError('get', [])));
+	    catchError(this.handleError('get', [])));
   }
 
   public getContent(id: number): Observable<Content> {
-    var endpoint = this.API_URL + "contents/" + id;
+    var endpoint = this.API_URL + "content/" + id;
     return this.http.get<Content>(endpoint)
       .pipe(
         tap(_ => this.log('fetched content')),
-	catchError(this.handleError('getContent', null)));
+	    catchError(this.handleError('getContent', null)));
   }
 
   readCookie(name: string): string {
     var nameEq = name + "=";
     var ca = document.cookie.split(";");
-    console.log("document.cookie: " + document.cookie);
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
       console.log(c);
@@ -47,8 +46,15 @@ export class ApiService {
     return null;
   }
 
+  registerContent(content: Content): Observable<any> {
+    return this.http.post(this.API_URL + "contents", content)
+      .pipe(
+        tap(_ => this.log('registered content')),
+        catchError(this.handleError<any>('registerContent')));
+  }
+
   updateContent(content: Content): Observable<any> {
-    return this.http.put(this.API_URL + "contents/" + content.id, content)
+    return this.http.put(this.API_URL + "content/" + content.id, content)
       .pipe(
         tap(_ => this.log(`updated content id:${content.id}`)),
         catchError(this.handleError<any>('updateContent')));
@@ -65,5 +71,4 @@ export class ApiService {
       return of(result as T);
     };
   }
-  
 }

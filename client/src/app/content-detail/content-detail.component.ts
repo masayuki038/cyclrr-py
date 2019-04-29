@@ -20,10 +20,15 @@ export class ContentDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    console.log("id: " + id);
-    this.apiService.getContent(id).subscribe((content) => {
-      this.content = content;
-    });
+    
+    if (id) {
+      this.apiService.getContent(id).subscribe((content) => {
+        this.content = content;
+      });
+      return;
+    } 
+
+    this.content = new Content();
   }
 
   goBack(): void {
@@ -31,7 +36,15 @@ export class ContentDetailComponent implements OnInit {
   } 
 
   save(): void {
-    this.apiService.updateContent(this.content)
+    if (this.content.id) {
+      this.apiService.updateContent(this.content)
       .subscribe(() => this.goBack());
+    } else {
+      const userJson = localStorage.getItem('currentUser');
+      const currentUser = JSON.parse(userJson);
+      this.content.user_id = currentUser.id;
+      this.apiService.registerContent(this.content)
+      .subscribe(() => this.goBack());
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { Subscription } from 'rxjs';
 import { ApiService } from '../api.service';
 import { Content } from '../content';
@@ -18,7 +19,8 @@ export class ContentListComponent implements OnInit {
   currentUserSubscription: Subscription;
 
   constructor(public apiService: ApiService,
-    public authenticationService: AuthenticationService) { }
+    public authenticationService: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit() {
     const userJson = localStorage.getItem('currentUser');
@@ -28,5 +30,9 @@ export class ContentListComponent implements OnInit {
         this.rows = contents;
       });
     }
+  }
+
+  addUser() {
+    this.router.navigate(['add']);
   }
 }

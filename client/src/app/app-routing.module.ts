@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'contents', component: ContentListComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: ContentDetailComponent },
+  { path: 'add', component: ContentDetailComponent },
   { path: '**', redirectTo: '' }
 ];
 

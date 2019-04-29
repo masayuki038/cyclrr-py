@@ -1,3 +1,4 @@
+<button mat-flat-button (click)="addUser()" color="primary">Add</button>
 <mat-list role="list" *ngFor="let content of rows">
 	<mat-list-item role="listitem">
   	<a routerLink="/detail/{{content.id}}">
