@@ -625,6 +625,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_error_interceptor__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./_helpers/error.interceptor */ "./src/app/_helpers/error.interceptor.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
+/* harmony import */ var _confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./confirmation-dialog/confirmation-dialog.component */ "./src/app/confirmation-dialog/confirmation-dialog.component.ts");
+
 
 
 
@@ -662,7 +664,8 @@ var AppModule = /** @class */ (function () {
                 _content_list_content_list_component__WEBPACK_IMPORTED_MODULE_7__["ContentListComponent"],
                 _messages_messages_component__WEBPACK_IMPORTED_MODULE_10__["MessagesComponent"],
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"],
-                _content_detail_content_detail_component__WEBPACK_IMPORTED_MODULE_12__["ContentDetailComponent"]
+                _content_detail_content_detail_component__WEBPACK_IMPORTED_MODULE_12__["ContentDetailComponent"],
+                _confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_21__["ConfirmationDialogComponent"]
             ],
             imports: [
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"],
@@ -679,6 +682,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatTableModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatIconModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatSlideToggleModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatDialogModule"],
                 _node_modules_angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"],
                 _node_modules_angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientXsrfModule"].withOptions({
                     cookieName: 'X_CSRF_Token',
@@ -686,6 +690,9 @@ var AppModule = /** @class */ (function () {
                 }),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_20__["FlexLayoutModule"]
+            ],
+            entryComponents: [
+                _confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_21__["ConfirmationDialogComponent"]
             ],
             providers: [
                 _api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"],
@@ -696,6 +703,68 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/confirmation-dialog/confirmation-dialog.component.html":
+/*!************************************************************************!*\
+  !*** ./src/app/confirmation-dialog/confirmation-dialog.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div mat-dialog-content>\n  {{message}}\n </div>\n <div mat-dialog-actions>\n   <button mat-button (click)=\"onNoClick()\">No</button>\n   <button mat-button [mat-dialog-close]=\"true\" cdkFocusInitial>Yes</button>\n </div>"
+
+/***/ }),
+
+/***/ "./src/app/confirmation-dialog/confirmation-dialog.component.scss":
+/*!************************************************************************!*\
+  !*** ./src/app/confirmation-dialog/confirmation-dialog.component.scss ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbmZpcm1hdGlvbi1kaWFsb2cvY29uZmlybWF0aW9uLWRpYWxvZy5jb21wb25lbnQuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/confirmation-dialog/confirmation-dialog.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/confirmation-dialog/confirmation-dialog.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: ConfirmationDialogComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmationDialogComponent", function() { return ConfirmationDialogComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+var ConfirmationDialogComponent = /** @class */ (function () {
+    function ConfirmationDialogComponent(dialogRef, message) {
+        this.dialogRef = dialogRef;
+        this.message = message;
+    }
+    ConfirmationDialogComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    ConfirmationDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-confirmation-dialog',
+            template: __webpack_require__(/*! ./confirmation-dialog.component.html */ "./src/app/confirmation-dialog/confirmation-dialog.component.html"),
+            styles: [__webpack_require__(/*! ./confirmation-dialog.component.scss */ "./src/app/confirmation-dialog/confirmation-dialog.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], String])
+    ], ConfirmationDialogComponent);
+    return ConfirmationDialogComponent;
 }());
 
 
@@ -837,6 +906,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
 /* harmony import */ var src_app_services_authentication_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/authentication.service */ "./src/app/_services/authentication.service.ts");
 /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
+/* harmony import */ var _confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../confirmation-dialog/confirmation-dialog.component */ "./src/app/confirmation-dialog/confirmation-dialog.component.ts");
+
 
 
 
@@ -845,17 +916,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ContentListComponent = /** @class */ (function () {
-    function ContentListComponent(apiService, authenticationService, alertService, router) {
+    function ContentListComponent(apiService, authenticationService, alertService, router, dialog) {
         var _this = this;
         this.apiService = apiService;
         this.authenticationService = authenticationService;
         this.alertService = alertService;
         this.router = router;
+        this.dialog = dialog;
         this.displayedColumns = ['id', 'title', 'display', 'detail', 'delete'];
         this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"]();
         this.deleteContent = function (id) {
-            _this.apiService.deleteContent(id).subscribe(function () {
-                window.location.reload();
+            var dialogRef = _this.dialog.open(_confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_7__["ConfirmationDialogComponent"], {
+                width: '350px',
+                data: "Do you confirm the deletion of this data?"
+            });
+            dialogRef.afterClosed().subscribe(function (result) {
+                if (result) {
+                    _this.apiService.deleteContent(id).subscribe(function () {
+                        window.location.reload();
+                    });
+                }
             });
         };
         this.toggleDisplay = function (e, content) {
@@ -887,7 +967,8 @@ var ContentListComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"],
             src_app_services_authentication_service__WEBPACK_IMPORTED_MODULE_5__["AuthenticationService"],
             src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__["AlertService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"]])
     ], ContentListComponent);
     return ContentListComponent;
 }());

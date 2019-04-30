@@ -28,9 +28,10 @@ import { MatButtonModule,
          MatInputModule,
          MatTableModule,
          MatIconModule, 
-         MatSlideToggle,
-         MatSlideToggleModule} from '@angular/material';
+         MatSlideToggleModule,
+         MatDialogModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [ 
@@ -42,7 +43,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ContentListComponent,
     MessagesComponent,
     DashboardComponent,
-    ContentDetailComponent
+    ContentDetailComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     AppRoutingModule,
@@ -59,6 +61,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatTableModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatDialogModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'X_CSRF_Token',
@@ -66,6 +69,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     }),
     ReactiveFormsModule,
     FlexLayoutModule
+  ],
+  entryComponents: [
+    ConfirmationDialogComponent
   ],
   providers: [
     ApiService,
