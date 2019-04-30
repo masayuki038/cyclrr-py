@@ -43,6 +43,7 @@ export class ContentDetailComponent implements OnInit {
       const userJson = localStorage.getItem('currentUser');
       const currentUser = JSON.parse(userJson);
       this.content.user_id = currentUser.id;
+      this.content.display = true;
       this.apiService.registerContent(this.content)
       .subscribe(() => this.goBack());
     }

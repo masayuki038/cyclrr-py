@@ -25,7 +25,11 @@ import { MatButtonModule,
 				 MatListModule,
 				 MatFormFieldModule,
 				 MatCardModule,
-				 MatInputModule } from '@angular/material';
+         MatInputModule,
+         MatTableModule,
+         MatIconModule, 
+         MatSlideToggle,
+         MatSlideToggleModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -51,7 +55,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 		MatListModule,
 		MatFormFieldModule,
 		MatInputModule,
-		MatCardModule,
+    MatCardModule,
+    MatTableModule,
+    MatIconModule,
+    MatSlideToggleModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'X_CSRF_Token',

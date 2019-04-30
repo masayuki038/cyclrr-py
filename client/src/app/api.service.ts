@@ -59,7 +59,14 @@ export class ApiService {
         tap(_ => this.log(`updated content id:${content.id}`)),
         catchError(this.handleError<any>('updateContent')));
   }
-	  
+    
+  deleteContent(id: number): Observable<any> {
+    return this.http.delete(this.API_URL + "content/" + id)
+      .pipe(
+        tap(_ => this.log(`deleted content id:${id}`)),
+        catchError(this.handleError<any>('updateContent')));
+  }
+
   private log(message: string) {
     this.messageService.add(`ApiService: ${message}`);
   }

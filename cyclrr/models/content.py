@@ -13,14 +13,16 @@ class Content(db.Model):
     content = db.Column(db.Text())
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
+    display = db.Column(db.Boolean, default=True)
 
-    def __init__(self,user_id, title, content):
+    def __init__(self,user_id, title, content, display):
         self.user_id = user_id
         self.title = title
         self.content = content
         now = datetime.now()
         self.created_at = now
         self.updated_at = now
+        self.display = display
 
 class ContentSchema(ma.ModelSchema):
     class Meta:

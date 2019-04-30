@@ -438,6 +438,11 @@ var ApiService = /** @class */ (function () {
         return this.http.put(this.API_URL + "content/" + content.id, content)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (_) { return _this.log("updated content id:" + content.id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('updateContent')));
     };
+    ApiService.prototype.deleteContent = function (id) {
+        var _this = this;
+        return this.http.delete(this.API_URL + "content/" + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (_) { return _this.log("deleted content id:" + id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('updateContent')));
+    };
     ApiService.prototype.log = function (message) {
         this.messageService.add("ApiService: " + message);
     };
@@ -539,7 +544,7 @@ module.exports = "<mat-toolbar class=\"toolbar\" color=\"primary\" *ngIf=\"curre
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".toolbar {\n  margin-bottom: 10px; }\n\n.fill-remaining-space {\n  flex: 1 1 auto; }\n\n.nav-item {\n  margin-right: 10px;\n  font-size: 0.8em;\n  font-weight: bold;\n  color: #ffffff; }\n\na.nav-link {\n  text-decoration: none; }\n\na:hover.nav-link {\n  text-decoration: underline; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZDpcXGRldmVsb3BtZW50XFxyZXBvc2l0b3J5XFxnaXRcXGN5Y2xyclxcY2xpZW50L3NyY1xcYXBwXFxhcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtQkFBbUIsRUFBQTs7QUFHckI7RUFDRSxjQUFjLEVBQUE7O0FBR2hCO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtFQUNoQixpQkFBaUI7RUFDakIsY0FBYyxFQUFBOztBQUdoQjtFQUNFLHFCQUFxQixFQUFBOztBQUd2QjtFQUNFLDBCQUEwQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRvb2xiYXIge1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xufVxuXG4uZmlsbC1yZW1haW5pbmctc3BhY2Uge1xuICBmbGV4OiAxIDEgYXV0bztcbn1cblxuLm5hdi1pdGVtIHtcbiAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xuICBmb250LXNpemU6IDAuOGVtO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgY29sb3I6ICNmZmZmZmY7XG59XG5cbmEubmF2LWxpbmsge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG59XG5cbmE6aG92ZXIubmF2LWxpbmsge1xuICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcbn1cbiJdfQ== */"
+module.exports = ".toolbar {\n  margin-bottom: 10px; }\n\n.fill-remaining-space {\n  flex: 1 1 auto; }\n\n.nav-item {\n  margin-right: 10px;\n  font-size: 0.8em;\n  font-weight: bold;\n  color: #ffffff; }\n\na.nav-link {\n  text-decoration: none; }\n\na:hover.nav-link {\n  text-decoration: underline; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvRDpcXGRldmVsb3BtZW50XFxyZXBvc2l0b3J5XFxnaXRcXGN5Y2xyclxcY2xpZW50L3NyY1xcYXBwXFxhcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtQkFBbUIsRUFBQTs7QUFHckI7RUFDRSxjQUFjLEVBQUE7O0FBR2hCO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtFQUNoQixpQkFBaUI7RUFDakIsY0FBYyxFQUFBOztBQUdoQjtFQUNFLHFCQUFxQixFQUFBOztBQUd2QjtFQUNFLDBCQUEwQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRvb2xiYXIge1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xufVxuXG4uZmlsbC1yZW1haW5pbmctc3BhY2Uge1xuICBmbGV4OiAxIDEgYXV0bztcbn1cblxuLm5hdi1pdGVtIHtcbiAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xuICBmb250LXNpemU6IDAuOGVtO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgY29sb3I6ICNmZmZmZmY7XG59XG5cbmEubmF2LWxpbmsge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG59XG5cbmE6aG92ZXIubmF2LWxpbmsge1xuICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -671,6 +676,9 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatFormFieldModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatInputModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatCardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatIconModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatSlideToggleModule"],
                 _node_modules_angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"],
                 _node_modules_angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientXsrfModule"].withOptions({
                     cookieName: 'X_CSRF_Token',
@@ -712,7 +720,7 @@ module.exports = "<div class=\"content\" *ngIf=\"content\">\n  <mat-form-field>\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".content {\n  display: flex;\n  flex-direction: column; }\n  .content * {\n    width: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29udGVudC1kZXRhaWwvZDpcXGRldmVsb3BtZW50XFxyZXBvc2l0b3J5XFxnaXRcXGN5Y2xyclxcY2xpZW50L3NyY1xcYXBwXFxjb250ZW50LWRldGFpbFxcY29udGVudC1kZXRhaWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isc0JBQXNCLEVBQUE7RUFGeEI7SUFJRSxXQUFXLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb250ZW50LWRldGFpbC9jb250ZW50LWRldGFpbC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250ZW50IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgKiB7XG5cdFx0d2lkdGg6IDEwMCU7XG4gIH1cbn1cblxuXG4iXX0= */"
+module.exports = ".content {\n  display: flex;\n  flex-direction: column; }\n  .content * {\n    width: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29udGVudC1kZXRhaWwvRDpcXGRldmVsb3BtZW50XFxyZXBvc2l0b3J5XFxnaXRcXGN5Y2xyclxcY2xpZW50L3NyY1xcYXBwXFxjb250ZW50LWRldGFpbFxcY29udGVudC1kZXRhaWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isc0JBQXNCLEVBQUE7RUFGeEI7SUFJRSxXQUFXLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb250ZW50LWRldGFpbC9jb250ZW50LWRldGFpbC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250ZW50IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgKiB7XG5cdFx0d2lkdGg6IDEwMCU7XG4gIH1cbn1cblxuXG4iXX0= */"
 
 /***/ }),
 
@@ -768,6 +776,7 @@ var ContentDetailComponent = /** @class */ (function () {
             var userJson = localStorage.getItem('currentUser');
             var currentUser = JSON.parse(userJson);
             this.content.user_id = currentUser.id;
+            this.content.display = true;
             this.apiService.registerContent(this.content)
                 .subscribe(function () { return _this.goBack(); });
         }
@@ -796,7 +805,7 @@ var ContentDetailComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbnRlbnQtbGlzdC9jb250ZW50LWxpc3QuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "table {\r\n    width: 100%;\r\n    overflow-x: auto;\r\n    overflow-y: hidden;\r\n    min-width: 500px;\r\n}\r\n \r\nth.mat-header-cell {\r\n    text-align: left;\r\n    max-width: 300px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29udGVudC1saXN0L2NvbnRlbnQtbGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksV0FBVztJQUNYLGdCQUFnQjtJQUNoQixrQkFBa0I7SUFDbEIsZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksZ0JBQWdCO0lBQ2hCLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2NvbnRlbnQtbGlzdC9jb250ZW50LWxpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgb3ZlcmZsb3cteDogYXV0bztcclxuICAgIG92ZXJmbG93LXk6IGhpZGRlbjtcclxuICAgIG1pbi13aWR0aDogNTAwcHg7XHJcbn1cclxuIFxyXG50aC5tYXQtaGVhZGVyLWNlbGwge1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdDtcclxuICAgIG1heC13aWR0aDogMzAwcHg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -807,7 +816,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-flat-button (click)=\"addUser()\" color=\"primary\">Add</button>\n<mat-list role=\"list\" *ngFor=\"let content of rows\">\n\t<mat-list-item role=\"listitem\">\n  \t<a routerLink=\"/detail/{{content.id}}\">\n    \t<span class=\"badge\">{{content.title}}</span>\n  \t</a>\n\t</mat-list-item>\n</mat-list>\n\n"
+module.exports = "<button mat-flat-button (click)=\"addContent()\" color=\"primary\">Add</button>\n<table mat-table [dataSource]=\"dataSource\">\n\t<ng-container matColumnDef=\"id\">\n\t\t<th mat-header-cell *matHeaderCellDef> Id </th>\n\t\t<td mat-cell *matCellDef=\"let content\"> {{content.id}} </td>\n\t</ng-container>\n\n\t<ng-container matColumnDef=\"title\">\n\t\t<th mat-header-cell *matHeaderCellDef> Title </th>\n\t\t<td mat-cell *matCellDef=\"let content\"> {{content.title}} </td>\n\t</ng-container>\n\n\t<ng-container matColumnDef=\"display\">\n\t\t<th mat-header-cell *matHeaderCellDef> Display </th>\n\t\t<td mat-cell *matCellDef=\"let content\">\n\t\t\t<mat-slide-toggle\n\t\t\t\t[checked]=\"content.display\" (change)=\"toggleDisplay($event, content)\">\n\t\t\t</mat-slide-toggle>\n\t\t</td>\n\t</ng-container>\n\n\t<ng-container matColumnDef=\"detail\">\n\t\t<th mat-header-cell *matHeaderCellDef> detail </th>\n\t\t<td mat-cell *matCellDef=\"let content\">\n\t\t\t<button mat-icon-button color=\"primary\" routerLink=\"/detail/{{content.id}}\">\n\t\t\t\t<mat-icon class=\"mat-18\">reorder</mat-icon>\n\t\t\t</button>\n\t\t</td>\n\t</ng-container>\n\n\t<ng-container matColumnDef=\"delete\">\n\t\t<th mat-header-cell *matHeaderCellDef> Delete </th>\n\t\t<td mat-cell *matCellDef=\"let content\">\n\t\t\t<button mat-icon-button color=\"warn\" (click)=\"deleteContent(content.id)\">\n\t\t\t\t<mat-icon class=\"mat-18\">delete</mat-icon>\n\t\t\t</button>\n\t\t</td>\n\t</ng-container>\n\t \n\t<tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n\t<tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n</table>\n\n"
 
 /***/ }),
 
@@ -824,19 +833,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
-/* harmony import */ var src_app_services_authentication_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/authentication.service */ "./src/app/_services/authentication.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+/* harmony import */ var src_app_services_authentication_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/authentication.service */ "./src/app/_services/authentication.service.ts");
+/* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
+
+
 
 
 
 
 
 var ContentListComponent = /** @class */ (function () {
-    function ContentListComponent(apiService, authenticationService, router) {
+    function ContentListComponent(apiService, authenticationService, alertService, router) {
+        var _this = this;
         this.apiService = apiService;
         this.authenticationService = authenticationService;
+        this.alertService = alertService;
         this.router = router;
-        this.columns = ['id', 'name'];
+        this.displayedColumns = ['id', 'title', 'display', 'detail', 'delete'];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableDataSource"]();
+        this.deleteContent = function (id) {
+            _this.apiService.deleteContent(id).subscribe(function () {
+                window.location.reload();
+            });
+        };
+        this.toggleDisplay = function (e, content) {
+            content.display = e.checked;
+            _this.apiService.updateContent(content).subscribe(function () {
+                _this.alertService.success("Updated.");
+            });
+        };
     }
     ContentListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -844,11 +871,11 @@ var ContentListComponent = /** @class */ (function () {
         if (userJson) {
             this.currentUser = JSON.parse(userJson);
             this.apiService.getContents(this.currentUser.id).subscribe(function (contents) {
-                _this.rows = contents;
+                _this.dataSource.data = contents;
             });
         }
     };
-    ContentListComponent.prototype.addUser = function () {
+    ContentListComponent.prototype.addContent = function () {
         this.router.navigate(['add']);
     };
     ContentListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -857,8 +884,9 @@ var ContentListComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./content-list.component.html */ "./src/app/content-list/content-list.component.html"),
             styles: [__webpack_require__(/*! ./content-list.component.css */ "./src/app/content-list/content-list.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"],
-            src_app_services_authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"],
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"],
+            src_app_services_authentication_service__WEBPACK_IMPORTED_MODULE_5__["AuthenticationService"],
+            src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__["AlertService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ContentListComponent);
     return ContentListComponent;
@@ -879,7 +907,8 @@ var ContentListComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Content", function() { return Content; });
 var Content = /** @class */ (function () {
-    function Content(id, user_id, title, content) {
+    function Content(id, user_id, title, content, display) {
+        this.display = true;
     }
     return Content;
 }());
@@ -1022,7 +1051,7 @@ module.exports = "<mat-card>\n  <mat-card-title>cyclrr</mat-card-title>\n  <mat-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n  display: flex;\n  justify-content: center;\n  margin: 100px 0px; }\n\nmat-card-title {\n  display: flex;\n  justify-content: center; }\n\nmat-card-content {\n  display: flex;\n  justify-content: center; }\n\n.btn {\n  display: flex; }\n\n.btn-link {\n  justify-content: flex-end; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vZDpcXGRldmVsb3BtZW50XFxyZXBvc2l0b3J5XFxnaXRcXGN5Y2xyclxcY2xpZW50L3NyY1xcYXBwXFxsb2dpblxcbG9naW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLGlCQUFpQixFQUFBOztBQUduQjtFQUNFLGFBQWE7RUFDYix1QkFBdUIsRUFBQTs7QUFHekI7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCLEVBQUE7O0FBR3pCO0VBQ0UsYUFBYSxFQUFBOztBQUdmO0VBQ0UseUJBQXlCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIG1hcmdpbjogMTAwcHggMHB4O1xufVxuXG5tYXQtY2FyZC10aXRsZSB7IFxuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxubWF0LWNhcmQtY29udGVudCB7IFxuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuLmJ0biB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG5cbi5idG4tbGluayB7XG4gIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG59XG4gXG4iXX0= */"
+module.exports = ":host {\n  display: flex;\n  justify-content: center;\n  margin: 100px 0px; }\n\nmat-card-title {\n  display: flex;\n  justify-content: center; }\n\nmat-card-content {\n  display: flex;\n  justify-content: center; }\n\n.btn {\n  display: flex; }\n\n.btn-link {\n  justify-content: flex-end; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vRDpcXGRldmVsb3BtZW50XFxyZXBvc2l0b3J5XFxnaXRcXGN5Y2xyclxcY2xpZW50L3NyY1xcYXBwXFxsb2dpblxcbG9naW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLGlCQUFpQixFQUFBOztBQUduQjtFQUNFLGFBQWE7RUFDYix1QkFBdUIsRUFBQTs7QUFHekI7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCLEVBQUE7O0FBR3pCO0VBQ0UsYUFBYSxFQUFBOztBQUdmO0VBQ0UseUJBQXlCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIG1hcmdpbjogMTAwcHggMHB4O1xufVxuXG5tYXQtY2FyZC10aXRsZSB7IFxuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxubWF0LWNhcmQtY29udGVudCB7IFxuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuLmJ0biB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG5cbi5idG4tbGluayB7XG4gIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG59XG4gXG4iXX0= */"
 
 /***/ }),
 
@@ -1223,7 +1252,7 @@ module.exports = "<mat-card>\n  <mat-card-title>Register</mat-card-title>\n  <ma
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\n  display: flex;\n  justify-content: center;\n  margin: 100px 0px; }\n\nmat-card-title {\n  display: flex;\n  justify-content: center; }\n\nmat-card-content {\n  display: flex;\n  justify-content: center; }\n\n.btn {\n  display: flex; }\n\n.btn-link {\n  justify-content: flex-end; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVnaXN0ZXIvZDpcXGRldmVsb3BtZW50XFxyZXBvc2l0b3J5XFxnaXRcXGN5Y2xyclxcY2xpZW50L3NyY1xcYXBwXFxyZWdpc3RlclxccmVnaXN0ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLGlCQUFpQixFQUFBOztBQUduQjtFQUNFLGFBQWE7RUFDYix1QkFBdUIsRUFBQTs7QUFHekI7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCLEVBQUE7O0FBR3pCO0VBQ0UsYUFBYSxFQUFBOztBQUdmO0VBQ0UseUJBQXlCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9yZWdpc3Rlci9yZWdpc3Rlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIG1hcmdpbjogMTAwcHggMHB4O1xufVxuXG5tYXQtY2FyZC10aXRsZSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5tYXQtY2FyZC1jb250ZW50IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbi5idG4ge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuXG4uYnRuLWxpbmsge1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xufVxuIl19 */"
+module.exports = ":host {\n  display: flex;\n  justify-content: center;\n  margin: 100px 0px; }\n\nmat-card-title {\n  display: flex;\n  justify-content: center; }\n\nmat-card-content {\n  display: flex;\n  justify-content: center; }\n\n.btn {\n  display: flex; }\n\n.btn-link {\n  justify-content: flex-end; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVnaXN0ZXIvRDpcXGRldmVsb3BtZW50XFxyZXBvc2l0b3J5XFxnaXRcXGN5Y2xyclxcY2xpZW50L3NyY1xcYXBwXFxyZWdpc3RlclxccmVnaXN0ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLGlCQUFpQixFQUFBOztBQUduQjtFQUNFLGFBQWE7RUFDYix1QkFBdUIsRUFBQTs7QUFHekI7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCLEVBQUE7O0FBR3pCO0VBQ0UsYUFBYSxFQUFBOztBQUdmO0VBQ0UseUJBQXlCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9yZWdpc3Rlci9yZWdpc3Rlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIG1hcmdpbjogMTAwcHggMHB4O1xufVxuXG5tYXQtY2FyZC10aXRsZSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5tYXQtY2FyZC1jb250ZW50IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbi5idG4ge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuXG4uYnRuLWxpbmsge1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -1376,7 +1405,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! d:\development\repository\git\cyclrr\client\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\development\repository\git\cyclrr\client\src\main.ts */"./src/main.ts");
 
 
 /***/ })
