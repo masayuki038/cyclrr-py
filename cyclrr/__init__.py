@@ -1,19 +1,24 @@
+import os
+import sys
+import logging
+
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
 from flask_restful import Resource, Api
 from flask_login import LoginManager
-import os
 
 db = SQLAlchemy()
 ma = Marshmallow()
 login_manager = LoginManager()
 
-def create_app(app):
+def setup(app):
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
     db.init_app(app)
     Migrate(app, db)
+    app.logger.addHandler(logging.StreamHandler(sys.stdout))
+    app.logger.setLevel(logging.INFO)
 
     from cyclrr.resources.user import UserResource, UserListResource
     from cyclrr.resources.user_token import UserTokenResource

@@ -7,6 +7,7 @@ from cyclrr import db
 from cyclrr.models.user import User
 from cyclrr.models.content import Content
 from cyclrr.models.counter import Counter
+from jobs import app
 
 @click.command('sendmail', help="Send next content by mail")
 @with_appcontext
@@ -22,10 +23,10 @@ def sendmail_run():
             filter(and_(Content.user_id==user.id, Content.display==True)).\
             order_by(Content.id).\
             all()
-        print('title: ' + contents[counter.count].title)
-        print('content: ' + contents[counter.count].content)
-        print('counter.count: ' + str(counter.count))
-        print('len(contents): ' + str(len(contents)))
+        app.logger.info('title: ' + contents[counter.count].title)
+        app.logger.info('content: ' + contents[counter.count].content)
+        app.logger.info('counter.count: ' + str(counter.count))
+        app.logger.info('len(contents): ' + str(len(contents)))
         
         if counter.count < len(contents) - 1:
             counter.count += 1
@@ -33,5 +34,4 @@ def sendmail_run():
             counter.count = 0
         counter.updated_at = datetime.now()
 
-        print('counter: ' + str(counter))
         db.session.commit()

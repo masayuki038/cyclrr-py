@@ -1,8 +1,10 @@
-from flask import Flask
-from cyclrr import create_app
-from jobs import job
+import sys
+import logging
 
-app = Flask(__name__, static_url_path='', template_folder='static')
+from cyclrr import setup
+from jobs import job, create_app
 
-app = create_app(app)
+app = create_app()
+app = setup(app)
+
 app.cli.add_command(job)

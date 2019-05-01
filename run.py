@@ -1,8 +1,8 @@
 from flask import Flask, render_template
-from cyclrr import create_app
+from cyclrr import setup
 
 app = Flask(__name__, static_url_path='', template_folder='static')
-app = create_app(app)
+app = setup(app)
 
 @app.route("/")
 def index():
