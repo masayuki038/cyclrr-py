@@ -1,6 +1,7 @@
 import click
 from datetime import datetime
 from flask.cli import with_appcontext
+from sqlalchemy import and_
 
 from cyclrr import db
 from cyclrr.models.user import User
@@ -17,7 +18,8 @@ def sendmail_run():
             counter = Counter(user.id, 0)
             db.session.add(counter)
 
-        contents = db.session.query(Content).filter_by(user_id=user.id).all()
+        contents = db.session.query(Content).filter(
+            and_(Content.user_id==user.id, Content.display==True)).all()
         print('title: ' + contents[counter.count].title)
         print('content: ' + contents[counter.count].content)
         print('counter.count: ' + str(counter.count))
