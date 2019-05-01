@@ -38,7 +38,8 @@ class ContentResource(Resource):
 class ContentListResource(Resource):
 
     def get(self, user_id):
-        contents = db.session.query(Content).filter_by(user_id=user_id).all()
+        contents = db.session.query(Content.id, Content.user_id, Content.title, Content.display).\
+          filter_by(user_id=user_id).all()
         data = ContentSchema(many=True).dump(contents).data
         return jsonify(data)
 
