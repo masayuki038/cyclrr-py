@@ -15,7 +15,7 @@ class Content(db.Model):
     updated_at = db.Column(db.DateTime)
     display = db.Column(db.Boolean, default=True)
 
-    def __init__(self,user_id, title, content, display):
+    def __init__(self, user_id, title, content, display):
         self.user_id = user_id
         self.title = title
         self.content = content
