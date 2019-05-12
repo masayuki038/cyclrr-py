@@ -27,7 +27,6 @@ class User(db.Model, UserMixin):
 
 @login_manager.user_loader
 def load_user(id):
-    print("id: " + id)
     return db.session.query(User).filter_by(id=id).first()
 
 class UserSchema(ma.ModelSchema):

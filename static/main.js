@@ -405,7 +405,7 @@ var ApiService = /** @class */ (function () {
     }
     ApiService.prototype.getContents = function (uid) {
         var _this = this;
-        var endpoint = this.API_URL + "contents/" + uid;
+        var endpoint = this.API_URL + "contents";
         return this.http.get(endpoint)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (_) { return _this.log('fetched contents'); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('get', [])));
     };

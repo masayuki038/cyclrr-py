@@ -1,12 +1,15 @@
 import unittest
 import json
 
-from cyclrr import create_app, db
+from flask import Flask
+
+from cyclrr import setup, db
 from cyclrr.models.user import User
 
 class UserTokenResourceTestCase(unittest.TestCase):
     def setUp(self):
-        self.app = create_app('testing')
+        app = Flask(__name__)
+        self.app = setup(app)
         self.app_context = self.app.app_context()
         self.app_context.push()
         user = User(user_name='test-login-success', password='test-login-pass', first_name='test', last_name='login', mail='test-login@test.com')

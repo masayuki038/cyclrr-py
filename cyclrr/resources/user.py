@@ -20,14 +20,17 @@ class UserListResource(Resource):
         try:
             js = request.get_json()
             unmarshalled = UserSchema().load(js)
+            if unmarshalled.errors:
+                return "Invalid parameter. errors: " + str(unmarshalled.errors), 400
+
+            user = unmarshalled.data
+            db.session.add(user)
+            db.session.commit()
+            data = UserSchema(many=False).dump(user).data
+            return jsonify(data)
         except ValidationError as err:
             return "ValidationError: " + str(err), 400
+        except Exception as err:
+            db.session.rollback()
+            return "Error: " + str(err), 500
 
-        if unmarshalled.errors:
-            return "Invalid parameter. errors: " + str(unmarshalled.errors), 400
-
-        user = unmarshalled.data
-        db.session.add(user)
-        db.session.commit()
-        data = UserSchema(many=False).dump(user).data
-        return jsonify(data)
