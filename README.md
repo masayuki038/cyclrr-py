@@ -1,6 +1,6 @@
 ## cyclrr-py
 
-cyclrr-py is Simple Cyclic Remeinder. 
+cyclrr-py is Simple Cyclic Remeinder by email.
 
 ## Usage
 
@@ -17,3 +17,9 @@ cyclrr-py is Simple Cyclic Remeinder.
 ```
 FLASK_APP=cli.py flask job sendmail
 ```
+
+## Environment Vars
+
+- DATABASE_URL: Database URL (SQLAlchemy)
+- SENDGRID_API_KEY: API Key of SendGrid
+- SENDMAIL_FROM: From Address
